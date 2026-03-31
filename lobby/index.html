@@ -100,13 +100,13 @@
         </div>
 
         <div class="game-grid" id="game-display">
-            <div class="game-card lottery original g-wingo" onclick="location.href='wingo.html'">
+            <div class="game-card lottery original g-wingo" onclick="goToGame('wingo')">
                 <div class="hot-tag">HOT</div>
                 <span class="game-emoji">🎰</span>
                 <div class="game-info"><h4>WinGo 30s</h4><p>Color Prediction</p></div>
             </div>
 
-            <div class="game-card original g-aviator" onclick="location.href='aviator.html'">
+            <div class="game-card original g-aviator" onclick="goToGame('aviator')">
                 <span class="game-emoji">✈️</span>
                 <div class="game-info"><h4>Aviator</h4><p>Multiplayer multiplier</p></div>
             </div>
@@ -134,8 +134,18 @@
     <script>
         new Swiper('.banner-section', { loop: true, autoplay: { delay: 3000 } });
 
+        // গেম ওপেন করার ফাংশন
+        function goToGame(gameType) {
+            if (gameType === 'wingo') {
+                // যদি wingo ফাইলটি wingo ফোল্ডারের ভেতর থাকে তবে নিচের লাইনটি ব্যবহার করুন:
+                window.location.href = 'wingo/index.html'; 
+                // আর যদি সব ফাইল একই ফোল্ডারে থাকে তবে ব্যবহার করুন: window.location.href = 'wingo.html';
+            } else if (gameType === 'aviator') {
+                window.location.href = 'aviator.html';
+            }
+        }
+
         function refreshLobbyData() {
-            // LocalStorage থেকে সরাসরি ব্যালেন্স দেখানো
             let bal = localStorage.getItem('bal') || "0.00";
             document.getElementById('lob-bal').innerText = parseFloat(bal).toFixed(2);
         }
@@ -143,9 +153,7 @@
         function handleDepositClick() {
             let amount = prompt("Enter Deposit Amount (₹):", "500");
             if (!amount || isNaN(amount)) return;
-
             alert("Deposit Request of ₹" + amount + " sent! ⏳");
-            // এখানে আপনার ফায়ারবেস রিকোয়েস্ট লজিক অ্যাড করতে পারেন
         }
 
         function switchCat(cat, el) {
