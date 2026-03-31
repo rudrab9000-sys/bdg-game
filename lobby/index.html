@@ -134,13 +134,12 @@
     <script>
         new Swiper('.banner-section', { loop: true, autoplay: { delay: 3000 } });
 
-        // গেম ওপেন করার ফাংশন
         function goToGame(gameType) {
             if (gameType === 'wingo') {
-                // যদি wingo ফাইলটি wingo ফোল্ডারের ভেতর থাকে তবে নিচের লাইনটি ব্যবহার করুন:
-                window.location.href = 'wingo/index.html'; 
-                // আর যদি সব ফাইল একই ফোল্ডারে থাকে তবে ব্যবহার করুন: window.location.href = 'wingo.html';
+                // আপনার WinGo ফাইল যদি wingo.html নামে থাকে
+                window.location.href = 'wingo.html'; 
             } else if (gameType === 'aviator') {
+                // আপনার Aviator ফাইল যদি aviator.html নামে থাকে
                 window.location.href = 'aviator.html';
             }
         }
